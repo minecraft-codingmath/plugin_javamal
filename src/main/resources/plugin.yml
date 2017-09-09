@@ -1,0 +1,8 @@
+name: JavaMAL
+author: Scripter36(1350adwx)
+main: javamal.Main
+version: 0.0.1
+commands:
+  jm:
+    description: JavaMAL commands
+    usage: /jm
