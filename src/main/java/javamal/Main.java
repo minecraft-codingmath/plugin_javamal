@@ -54,50 +54,27 @@ public class Main extends JavaPlugin implements Listener{
 
                 Location p1 = pos1.get(player);
                 Location p2 = pos2.get(player);
+                p1.setY(3);
+                p2.setY(10000); // max height of structure
                 Vector rp1 = new Vector();
                 Vector rp2 = new Vector();
-                if (p1.getX() > p2.getX()) {
-                    rp1.setX(p2.getX());
-                    rp2.setX(p1.getX());
-                } else {
-                    rp1.setX(p1.getX());
-                    rp2.setX(p2.getX());
-                }
+                rp1.setX(Math.min(p1.getX(), p2.getX()));
+                rp2.setX(Math.max(p2.getX(), p1.getX()));
+                rp1.setY(Math.min(p1.getY(), p2.getY()));
+                rp2.setY(Math.max(p1.getY(), p2.getY()));
+                rp1.setZ(Math.min(p1.getZ(), p2.getZ()));
+                rp2.setZ(Math.max(p1.getZ(), p2.getZ()));
 
-                if (p1.getY() > p2.getY()) {
-                    rp1.setY(p2.getY());
-                    rp2.setY(p1.getY());
-                } else {
-                    rp1.setY(p1.getY());
-                    rp2.setY(p2.getY());
-                }
-
-                if (p1.getZ() > p2.getZ()) {
-                    rp1.setZ(p2.getZ());
-                    rp2.setZ(p1.getZ());
-                } else {
-                    rp1.setZ(p1.getZ());
-                    rp2.setZ(p2.getZ());
-                }
-
-                String result = "hs";
+                String result = "";
 
                 for (int y = (int) rp1.getY() ; y <= (int) rp2.getY() ; y++) {
-                    result += "[";
                     for (int z = (int) rp1.getZ() ; z <= (int) rp2.getZ() ; z++) {
-                        result += "[";
                         for (int x = (int) rp1.getX() ; x <= (int) rp2.getX() ; x++) {
                             Block block = player.getWorld().getBlockAt(x, y, z);
-                            if (block.getType().equals(Material.AIR)) {
-                                result += "h";
-                            } else {
-                                result += "c";
-                            }
-                            result += "s";
+                            result += String.format("cube(%d, %d, %d, %d)", x, y, z, 1);
                         }
-                        result += "]hr";
+                        result += "\n";
                     }
-                    result += "]hu";
                 }
 
                 this.getLogger().info(result);
