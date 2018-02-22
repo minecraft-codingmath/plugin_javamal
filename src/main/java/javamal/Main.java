@@ -70,11 +70,12 @@ public class Main extends JavaPlugin implements Listener{
 
                 String result = "\n";
                 int materialType = 0;
+                Block block = null;
 
                 for (int y = (int) rp1.getY() ; y <= (int) rp2.getY() ; y++) {
                     for (int z = (int) rp1.getZ() ; z <= (int) rp2.getZ() ; z++) {
                         for (int x = (int) rp1.getX() ; x <= (int) rp2.getX() ; x++) {
-                            Block block = player.getWorld().getBlockAt(x, y, z);
+                            block = player.getWorld().getBlockAt(x, y, z);
                             if (block.getType().equals(Material.AIR)) continue;
                             result += String.format("cube(%d, %d, %d, %d)\n", x - offsetX, z - offsetZ, y - offsetY + 1, 1);
                         }
