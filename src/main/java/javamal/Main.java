@@ -54,8 +54,8 @@ public class Main extends JavaPlugin implements Listener{
 
                 Location p1 = pos1.get(player);
                 Location p2 = pos2.get(player);
-                p1.setY(3);
-                p2.setY(10000); // max height of structure
+                p1.setY(4);
+                p2.setY(64); // max height of structure
                 Vector rp1 = new Vector();
                 Vector rp2 = new Vector();
                 rp1.setX(Math.min(p1.getX(), p2.getX()));
@@ -71,9 +71,9 @@ public class Main extends JavaPlugin implements Listener{
                     for (int z = (int) rp1.getZ() ; z <= (int) rp2.getZ() ; z++) {
                         for (int x = (int) rp1.getX() ; x <= (int) rp2.getX() ; x++) {
                             Block block = player.getWorld().getBlockAt(x, y, z);
-                            result += String.format("cube(%d, %d, %d, %d)", x, y, z, 1);
+                            if (block.getType().equals(Material.AIR)) continue;
+                            result += String.format("cube(%d, %d, %d, %d)\n", x, y, z, 1);
                         }
-                        result += "\n";
                     }
                 }
 
