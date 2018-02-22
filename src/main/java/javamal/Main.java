@@ -68,7 +68,7 @@ public class Main extends JavaPlugin implements Listener{
                 rp1.setZ(Math.min(p1.getZ(), p2.getZ()));
                 rp2.setZ(Math.max(p1.getZ(), p2.getZ()));
 
-                String result = "";
+                String result = "\n";
                 int materialType = 0;
 
                 for (int y = (int) rp1.getY() ; y <= (int) rp2.getY() ; y++) {
