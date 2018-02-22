@@ -1,6 +1,6 @@
 # plugin-codingmath
 
-Mincraft plugin for <codingmath.xyz>.
+Mincraft plugin for [codingmath.xyz](codingmath.xyz).
 
 ## Roadmap
 
